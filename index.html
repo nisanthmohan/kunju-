@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    overflow: hidden;
+    color: white;
+}
+
+/* Blurred background */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('bg.jpg') no-repeat center center/cover;
+    filter: blur(8px);
+    z-index: -2;
+}
+
+/* Dark overlay */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+}
+
+/* Content */
+.container {
+    padding: 40px 15px;
+}
+
+/* Text */
+h1 {
+    font-size: 32px;
+}
+
+p {
+    font-size: 18px;
+}
+
+/* Photo */
+img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 3px solid white;
+    margin-top: 15px;
+}
+
+/* Button */
+button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #ff4e78;
+    cursor: pointer;
+}
+
+/* Typing text */
+#typing {
+    margin-top: 25px;
+    font-size: 20px;
+    min-height: 80px;
+    white-space: pre-line;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    color: rgba(255,255,255,0.8);
+    font-size: 18px;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio id="bgMusic" loop>
+    <source src="kunju.mp3" type="audio/mp3">
+</audio>
+
+<div class="container">
+    <h1>Happy Birthday, My Love ❤️</h1>
+
+    <p>You make my life beautiful every single day 💕</p>
+
+    <!-- Your photo -->
+    <img src="kunju.jpg" alt="Her Photo">
+
+    <br>
+
+    <button onclick="startLove()">Tap to Feel My Love 💖</button>
+
+    <!-- Typing message -->
+    <div id="typing"></div>
+</div>
+
+<script>
+// Floating hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 8000);
+}
+setInterval(createHeart, 300);
+
+// Typing effect
+const message = `My Love ❤️,
+
+From the moment you came into my life,
+everything became more beautiful.
+
+Your smile is my favorite thing in the world 😊
+and your happiness means everything to me.
+
+On your special day,
+I just want to promise you one thing...
+
+I will love you today,
+tomorrow,
+and forever 💖
+
+Happy Birthday, my princess 👑`;
+
+let i = 0;
+
+function typeWriter() {
+    if (i < message.length) {
+        document.getElementById("typing").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 40);
+    }
+}
+
+// Start everything
+function startLove() {
+    document.getElementById("bgMusic").play();
+    typeWriter();
+}
+</script>
+
+</body>
+</html>
